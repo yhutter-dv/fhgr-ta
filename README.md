@@ -14,5 +14,9 @@ In order to run the Jupyter Notebooks execute the following command:
 jupyter notebook ./jupyter_notebooks
 ```
 
-
+In order to see my personal notes execute the following command:
+```bash
+cd ./notes
+mdslides ./main.md --include ./media
+```
 
