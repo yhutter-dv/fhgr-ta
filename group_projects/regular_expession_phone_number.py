@@ -1,10 +1,20 @@
 import re
 
 text = """
- Hello my Name is Max and my phone number is +41 79 204 51 69. It used to be +41 79 204 51 68 but now it is +41 79 204 51 69.
+Foo Mustermann
+Phone Number: +41 81 410 08 49
+foo.mustermann@gmail.com
+
+Bar Mustermann
++41 81 410 08 21
+bar.mustermann@gmail.com
+
+Baz Mustermann
+Phone Number is +41 81 410 08 42
+baz.mustermann@gmail.com
 """
 
-phone_number = "+41 79 204 51 69"
+
 pattern = r"\+[\d\' ']+"
 
 compiled_regex = re.compile(pattern)
