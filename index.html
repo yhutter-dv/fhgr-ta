@@ -1,0 +1,219 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Text Analytics</title>
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+		<!-- Theme used for syntax highlighted code -->
+<link rel="stylesheet" href="plugin/highlight/monokai.min.css" id="highlight-theme"></head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+<section data-markdown  ><textarea data-template>
+[comment]: # (markdown: { smartypants: true })
+[comment]: # (Other settings are documented at https://revealjs.com/config/)
+
+
+# Text Analytics
+Yannick Hutter | FHGR Chur | 
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+
+## Natural Language Processing
+
+* Es wird zwischen `geschriebener und gesprochener Sprache` unterschieden.
+* Hauptfokus liegt auf der `geschriebenen Sprache`
+* `Natural` bezeichnet die durch `menschliche Interaktion gewachsene Sprache`.
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+
+### Wichtige Rollen in NLP
+* Bedeutung
+* Entstehung von Struktur zwischen Wörtern
+* Kann durch das Beherschen der Sprache ein künstliches Bewusstsein geschaffen werden?
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### Wie lernen Menschen die Sprache
+* Durch Nachahmung und Wiederholung (Behavioristischer Ansatz nach Skinner)
+* Durch vorgegebene kognitive Fähigkeiten, festlegen von Kategorien, Vereinheitlichung und Übertragung (nach Comsky) 
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### Anwendungsfelder
+* Übersetzung - Machine Learning
+* Spracherkennung - Speech Recognition
+* Auskunftssysteme - Chat Bots
+* Automatische Textzusammenfassung
+* Textgenerierung und Analyse (Cluster, Stimmungsanalyse, Entity Extraction)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### Syntax
+* Sprache ist mehr als eine `ungeordnete` Ansammlung von Wörtern
+* Gibt die Struktur von Sätzen vor
+* Satz
+* Satzteil
+* Phrase (besteht aus mindestens einem Wort, meist mehrere)
+* Wort
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### Wörter
+* Sind die **kleinste unabhängige Einheit**.
+* Besitzen eigenständige Bedeutung
+* Bestehen aus Morphemen (ändert die Bedeutung des Wortes, bspw. Plural)
+* Morpheme sind `nicht unabhängig`
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### Wortarten (Part of Speech - POS)
+* Nomen
+* Verben
+* Adjektive
+* Adverb (beschreibt andere Wörter)
+* Pronomen
+* Präposition (anhand, dank, trotz, ...)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### Phrasen
+* Gruppierung eines oder mehrerer Wörter
+* Hauptwort ist meist der "Kopf"
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### Noun Phrase (NP) 
+* Nomen ist Hauptwort
+* Beispiele: "NLP", "the brown fox", "the lazy cat"
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### Verbal Phrase (VP) 
+* Verb ist Hauptwort
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### Adjektiv Phrase (ADJP) 
+* Adjektiv ist Hauptwort
+* Beschreibt oder qualifiziert Nomen
+* Beispiel: "Die sehr schnelle Katze" - "sehr schnelle"
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### Adverbial Phrase (ADVP) 
+* Adverb ist Hauptwort
+* Modifiziert Nomen, Verben oder andere Adverben
+* Beispiel: "NLP ist sehr interessant" - "sehr interessant" (Beschreibt das Verb genauer)
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### Präpositional Phrase (PP) 
+* Präposition ist Hauptwort
+* Beschreibt andere Wörter oder Phrasen 
+* Beispiel: "Eine Frau steht auf einer Leiter" - "auf einer Leiter" (Präposition "auf")
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+### Grammatiken
+* Wird laufend weiterentwickelt
+* Dependenzgrammatik 
+* Konstituentengrammatik 
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+
+### Dependenzgrammatik 
+* Beschreibt Abhängigkeit zwischen Wörtern 
+* Eins-zu-eins Beziehung, d.h. ein Wort hängt immer von einem anderen Wort ab
+* Hauptwort oder Wurzel Wort hat `keine weiteren Abhängigkeiten im Satz`
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+
+### Konstituentengrammatik
+* Gehen von `Wort-übergreifenden Strukturen aus`
+* Wörter bilden den Kopf von Phrasen
+* Zusammensetzung anhand `von Phasenstrukturregeln`
+* Erlauben Ableitungsregeln zur `Generierung von gültigen Sätzen`
+* Wortordnung und Wortreihenfolge kann zur Klassifikation von Sprachen und Sprachfamilien genutzt werden
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## Reguläre Ausdrücke
+* Werden genutzt um den Text nach bestimmten `Mustern` zu analysieren oder auch zum Suchen und Ersetzen
+* `.` steht für **ein einzelnes (beliebiges) Zeichen**
+* `^` steht für den **Anfang eines Strings**
+* `$` steht für das **Ende eines Strings**
+* `*` steht für **beliebig viele (auch keine) Wiederholungen des Musters vor dem Stern
+* `?` steht für *keine oder eine Wiederholung** eines Zeichen/Musters
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## Reguläre Ausdrücke
+* `+` steht für **eins oder mehrere** Wiederholungen eines Zeichen/Musters
+* `[]` steht für eine **alternative Auswahl der in den Klammern aufgeführter Zeichen**
+* `[^]` **negiert** die Auswahl 
+* `\d` steht für **Dezimalziffern 0-9**
+* `\D` steht für **nicht Dezimalziffern**
+* `\s` steht für **Whitespace**
+* `\S` steht für **nicht Whitespace**
+
+</textarea></section>
+<section data-markdown  ><textarea data-template>
+
+## Reguläre Ausdrücke
+* `\w` steht für **alphanumerische 0-9 | a-Z | A-Z | _** Zeichen
+* `\W` steht für **nicht alphanumerische** Zeichen
+
+</textarea></section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+Reveal.initialize({
+controls : false,
+markdown : {smartypants: true},
+controls : true,
+keyboard : true,
+hash : false,
+respondToHashChanges : false,
+				hash: true,
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath ]
+			});
+		</script>
+	</body>
+</html>
