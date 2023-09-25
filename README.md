@@ -16,7 +16,6 @@ jupyter notebook ./jupyter_notebooks
 
 In order to see my personal notes execute the following command:
 ```bash
-cd ./notes
-mdslides ./main.md --include ./media
+mdslides ./presentation.md --include ./media
 ```
 
