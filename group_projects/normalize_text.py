@@ -55,6 +55,16 @@ def strip_html_tags(text):
     return stripped_text
 
 def remove_accented_chars(text):
+    replace_dict = {
+        "ä": "ae",
+        "ö": "oe",
+        "ü": "ue",
+        "Ä": "Ae",
+        "Ö": "Oe",
+        "Ü": "Ue"
+    }
+    for key, value in replace_dict.items():
+        text = text.replace(key, value)
     text = unicodedata.normalize('NFKD', text).encode('ascii', 'ignore').decode('utf-8', 'ignore')
     return text
 
@@ -88,7 +98,7 @@ def remove_special_characters(text, remove_digits=False):
     text = re.sub(pattern, '', text)
     return text
 
-stopword_list = nltk.corpus.stopwords.words('english')
+stopword_list = nltk.corpus.stopwords.words('german')
 def remove_stopwords(text, is_lower_case=False, stopwords=stopword_list):
     
     tokens = tokenizer.tokenize(text)
@@ -103,7 +113,7 @@ def remove_stopwords(text, is_lower_case=False, stopwords=stopword_list):
 if __name__ == "__main__":
     with open('./verfassung.txt', 'r') as f:
         content = f.readlines()
-    nlp = spacy.load('en_core_web_trf')
+    nlp = spacy.load('de_dep_news_trf')
 
     tokenizer = ToktokTokenizer()
     normalized = normalize_corpus(content, html_stripping = False, contraction_expansion = False)
