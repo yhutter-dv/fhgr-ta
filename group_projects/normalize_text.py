@@ -89,6 +89,7 @@ def expand_contractions(text, contraction_mapping=contractions_dict):
     return expanded_text
 
 def lemmatize_text(text):
+    nlp = spacy.load('de_dep_news_trf')
     text = nlp(text)
     text = ' '.join([word.lemma_ if word.lemma_ != '-PRON-' else word.text for word in text])
     return text
@@ -98,9 +99,11 @@ def remove_special_characters(text, remove_digits=False):
     text = re.sub(pattern, '', text)
     return text
 
-stopword_list = nltk.corpus.stopwords.words('german')
-def remove_stopwords(text, is_lower_case=False, stopwords=stopword_list):
-    
+def remove_stopwords(text, is_lower_case=False, stopwords=[]):
+    if len(stopwords) <= 0:
+        stopwords = nltk.corpus.stopwords.words('german')
+
+    tokenizer = ToktokTokenizer()
     tokens = tokenizer.tokenize(text)
     tokens = [token.strip() for token in tokens]
     if is_lower_case:
@@ -113,8 +116,6 @@ def remove_stopwords(text, is_lower_case=False, stopwords=stopword_list):
 if __name__ == "__main__":
     with open('./verfassung.txt', 'r') as f:
         content = f.readlines()
-    nlp = spacy.load('de_dep_news_trf')
 
-    tokenizer = ToktokTokenizer()
     normalized = normalize_corpus(content, html_stripping = False, contraction_expansion = False)
     print(normalized[:10])
