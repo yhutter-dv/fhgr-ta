@@ -3,8 +3,8 @@ import spacy
 import re
 from bs4 import BeautifulSoup
 import unicodedata
-from contractions import contractions_dict
 from nltk.tokenize.toktok import ToktokTokenizer
+from contractions import CONTRACTION_MAP
 
 def normalize_corpus(corpus, html_stripping=True, contraction_expansion=True,
                      accented_char_removal=True, text_lower_case=True, 
@@ -68,7 +68,7 @@ def remove_accented_chars(text):
     text = unicodedata.normalize('NFKD', text).encode('ascii', 'ignore').decode('utf-8', 'ignore')
     return text
 
-def expand_contractions(text, contraction_mapping=contractions_dict):
+def expand_contractions(text, contraction_mapping=CONTRACTION_MAP):
     
     # HR: hier wird mit einem compilierten Pattern gearbeitet; dieses wird aus allen Contraction-Schlüsseln zusammengesetzt
     contractions_pattern = re.compile('({})'.format('|'.join(contraction_mapping.keys())), flags=re.IGNORECASE|re.DOTALL)
@@ -97,6 +97,7 @@ def lemmatize_text(text):
 def remove_special_characters(text, remove_digits=False):
     pattern = r'[^a-zA-z0-9\s]' if not remove_digits else r'[^a-zA-z\s]'
     text = re.sub(pattern, '', text)
+    text = text.replace("\t", "")
     return text
 
 def remove_stopwords(text, is_lower_case=False, stopwords=[]):
