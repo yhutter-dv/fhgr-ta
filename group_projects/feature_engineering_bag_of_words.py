@@ -12,4 +12,5 @@ if __name__ == "__main__":
     cv_matrix = cv_matrix.toarray()
     vocab = cv.get_feature_names_out()
     df = pd.DataFrame(cv_matrix, columns=vocab)
+    print(content)
     print(df)
