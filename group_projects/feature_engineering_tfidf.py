@@ -6,7 +6,7 @@ import numpy as np
 if __name__ == "__main__":
     with open("./newscrawl_2012_10K.txt", "r") as f:
         content = f.readlines()
-    content = normalize_corpus(content[:5], html_stripping = False, contraction_expansion = False)
+    content = normalize_corpus(content[:1000], html_stripping = False, contraction_expansion = False)
 
     tv = TfidfVectorizer(min_df=0., max_df=1., norm='l2',
                      use_idf=True, smooth_idf=True)
