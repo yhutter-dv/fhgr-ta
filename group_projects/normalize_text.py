@@ -12,6 +12,8 @@ def normalize_corpus(corpus, html_stripping=True, contraction_expansion=True,
                      stopword_removal=True, remove_digits=True):
     
     normalized_corpus = []
+    nlp = spacy.load('de_dep_news_trf')
+    stopwords = nltk.corpus.stopwords.words('german')
     # normalize each document in the corpus
     for doc in corpus:
         # strip HTML
@@ -30,7 +32,7 @@ def normalize_corpus(corpus, html_stripping=True, contraction_expansion=True,
         doc = re.sub(r'[\r|\n|\r\n]+', ' ',doc)
         # lemmatize text
         if text_lemmatization:
-            doc = lemmatize_text(doc)
+            doc = lemmatize_text(doc, nlp)
         # remove special characters and\or digits    
         if special_char_removal:
             # insert spaces between special characters to isolate them    
@@ -41,7 +43,7 @@ def normalize_corpus(corpus, html_stripping=True, contraction_expansion=True,
         doc = re.sub(' +', ' ', doc)
         # remove stopwords
         if stopword_removal:
-            doc = remove_stopwords(doc, is_lower_case=text_lower_case)
+            doc = remove_stopwords(doc, is_lower_case=text_lower_case, stopwords=stopwords)
             
         normalized_corpus.append(doc)
         
@@ -55,16 +57,6 @@ def strip_html_tags(text):
     return stripped_text
 
 def remove_accented_chars(text):
-    replace_dict = {
-        "ä": "ae",
-        "ö": "oe",
-        "ü": "ue",
-        "Ä": "Ae",
-        "Ö": "Oe",
-        "Ü": "Ue"
-    }
-    for key, value in replace_dict.items():
-        text = text.replace(key, value)
     text = unicodedata.normalize('NFKD', text).encode('ascii', 'ignore').decode('utf-8', 'ignore')
     return text
 
@@ -88,8 +80,7 @@ def expand_contractions(text, contraction_mapping=CONTRACTION_MAP):
     expanded_text = re.sub("'", "", expanded_text)  # noch etwas aufräumen
     return expanded_text
 
-def lemmatize_text(text):
-    nlp = spacy.load('de_dep_news_trf')
+def lemmatize_text(text, nlp):
     text = nlp(text)
     text = ' '.join([word.lemma_ if word.lemma_ != '-PRON-' else word.text for word in text])
     return text
@@ -101,9 +92,6 @@ def remove_special_characters(text, remove_digits=False):
     return text
 
 def remove_stopwords(text, is_lower_case=False, stopwords=[]):
-    if len(stopwords) <= 0:
-        stopwords = nltk.corpus.stopwords.words('german')
-
     tokenizer = ToktokTokenizer()
     tokens = tokenizer.tokenize(text)
     tokens = [token.strip() for token in tokens]
