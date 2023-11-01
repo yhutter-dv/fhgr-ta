@@ -1,4 +1,4 @@
-from normalize_text import normalize_corpus
+from normalize_corpus import normalize_corpus
 from sklearn.feature_extraction.text import CountVectorizer
 import pandas as pd
 

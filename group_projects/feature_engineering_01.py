@@ -1,4 +1,4 @@
-from normalize_text import normalize_corpus
+from normalize_corpus import normalize_corpus
 
 if __name__ == "__main__":
     with open("./newscrawl_2012_10K.txt", "r", encoding="utf-8") as f:
