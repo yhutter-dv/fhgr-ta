@@ -9,11 +9,15 @@ from contractions import CONTRACTION_MAP
 def normalize_corpus(corpus, html_stripping=True, contraction_expansion=True,
                      accented_char_removal=True, text_lower_case=True, 
                      text_lemmatization=True, special_char_removal=True, 
-                     stopword_removal=True, remove_digits=True):
+                     stopword_removal=True, remove_digits=True, lang="german"):
     
     normalized_corpus = []
-    nlp = spacy.load('de_dep_news_trf')
-    stopwords = nltk.corpus.stopwords.words('german')
+    if lang == "german":
+        nlp = spacy.load('de_dep_news_trf')
+        stopwords = nltk.corpus.stopwords.words('german')
+    else:
+        nlp = spacy.load("en_core_web_trf")
+        stopwords = nltk.corpus.stopwords.words("english")
     # normalize each document in the corpus
     for doc in corpus:
         # strip HTML
