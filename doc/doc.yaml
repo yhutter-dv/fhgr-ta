@@ -1,0 +1,4 @@
+input-files:
+  - main.md
+output-file: exam_preparation_ta_yhu.pdf
+toc: true
