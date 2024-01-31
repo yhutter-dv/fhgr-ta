@@ -1,3 +1,6 @@
+# PDF Files
+*.pdf
+
 # Big text files
 deu-ch_web-public_2019_1M-sentences.txt
 deu-ch_web-public_2019_1M-sentences_cleaned.txt

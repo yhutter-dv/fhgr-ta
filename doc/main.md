@@ -66,6 +66,7 @@ Aus diesen Wortarten lassen sich wiederum ganze Sätze bilden
 |Adverbialphrase (ADVP)|Hauptwort ist Adverb|NLP ist **sehr interessant**|
 |Präpositionalphrase (PP)|Präposition als Hauptwort|Eine Frau steht **auf einer Leiter**.|
 
+\newpage
 ## Darstellung von Grammatiken
 Mithilfe der **Dependenzengrammatik** können Abhängigkeiten zwischen Wörtern aufgezeigt werden:
 
@@ -106,12 +107,12 @@ Reguläre Ausdrücke sind Kurzschreibweisen für String-Muster, bspw. zum Suchen
 |Eckige Klammern ([ ])|steht für eine Alternativauswahl der in den Klammern aufgeführten Zeichen|
 |Dach in eckige Klammern ([^])|negiert die Auswahl|
 |Strich (|)|ist eine Oder-Auswahl (davor oder danach)|
-|\d|für Dezimalziffern, also [0123456789] oder [0-9]|
-|\D|für nicht-Dezimalziffern also [^0-9]|
-|\s|für whitespace|
-|\S|für nicht-Whitespace|
-|\w|für alphanumerische Zeichen, also [a-zA-Z0-9_]|
-|\W|für nicht-alphanumerische Zeichen|
+|\\d|für Dezimalziffern, also [0123456789] oder [0-9]|
+|\\D|für nicht-Dezimalziffern also [^0-9]|
+|\\s|für whitespace|
+|\\S|für nicht-Whitespace|
+|\\w|für alphanumerische Zeichen, also [a-zA-Z0-9_]|
+|\\W|für nicht-alphanumerische Zeichen|
 
 ## Beispiel für Reguläre Ausdrücke
 
@@ -209,6 +210,7 @@ Wortarten können mithilfe von **NLTK-Taggern** erkannt werden:
 
 Meistens werden eine oder mehrere Tagger hierzu kombiniert. Die Parser werden auf Trainingsdaten aus einem annotierten Korpus (POS- und Chunk-Tags) trainiert. Weitere Teile des Korpus (Testdaten) können zur Bestimmung der Genauigkeit verwendet werden.
 
+\newpage
 # Shallow Parsing
 Das Shallow Parsing kann zur **flachen Syntaxanalyse** genutzt werden. Hierzu werden **Sätze zu zusammenhängende Phrasen** konvertiert. Wichtig zu verstehen ist dass **keine detaillierte syntaktische Analyse innerhalb der Phrasen** erfolgt. Es stehen folgende Verfahren zur Auswahl:
 
@@ -278,7 +280,7 @@ Die Dimensionalität des Vektorraums entspricht der Anzahl **unterschiedlicher W
 * $VR = {W_1, W_2, ..., W_n}$ für n unterschiedliche Wörter
 * Ein Dokument / Satz entspricht dann einem Vektor $D=(W_{D1}, W_{D2}, W_{Dn})$ wobei $W_{Di}$ jeweils das Gewicht des Wortes $i$ repräsentiert
 
-
+\newpage
 ## Bag of Words
 Ein **Bag of Words** stellt die Wörter als eine Ansammlung von Zahlen dar und zählt dere Häufigkeit. Hierzu ein Beispiel:
 
@@ -312,6 +314,7 @@ Die **Vorteile** von TF-IDF sind:
 * einfach umzusetzen
 * vielseitig einsetzbar
 
+\newpage
 Jedoch bietet TF-IDF auch gewisse **Nachteile**:
 
 * Kontext geht verloren
@@ -341,6 +344,7 @@ Cluster können beispielweise **anhand von folgenden Kriterien** erzeugt werden:
 * Complete-Link - Einzelne Elemente (jeweils unähnlichste Elemente)
 * Average-Link - Mittelwert der Ähnlichkeiten
 
+\newpage
 # Textklassifikation
 Um Texte klassifizieren zu können sind folgende Informationen notwendig:
 
@@ -444,6 +448,7 @@ In der Praxis können oft vortrainierte Modelle verwendet werden:
 * Vorhersage des Kontexts für ein Wort
 * Ein Eingabewort – mehrere Ausgabewörter
 
+\newpage
 **Continous-bag-of-words**
 
 * Vorhersage eines Wortes aus dem Kontext
@@ -539,10 +544,10 @@ Die oben genannten Verfahren erzeugen **dichtere Vektoren als BoW/TF-IDF**. Zur 
 
 > Laufzeiten können teilweise sehr lange sein
 
-
+\newpage
 # Mögliche Prüfungsfragen
 
-> Warum wird als Winkelmass für die Dokumentenähnlichkeit der Cosinuswinkel verwendet
+> Warum wird als Winkelmass für die Dokumentenähnlichkeit der Cosinuswinkel verwendet?
 
 * Numerisch stabil, welcher auch bei grossen Vektoren gut funktioniert
 * Cosinus-Ähnlichkeit ist unempfindlich gegenüber der Länge der Dokumente
@@ -552,7 +557,7 @@ Die oben genannten Verfahren erzeugen **dichtere Vektoren als BoW/TF-IDF**. Zur 
 * Reihenfolge spielt eine Rolle "brown fox" statt "fox brown"
 * Kontext wird beibehalten (teilweise)
 
-> Welche Möglichkeiten gibt es zur Behandlung von Zeichenwiederholungen
+> Welche Möglichkeiten gibt es zur Behandlung von Zeichenwiederholungen?
 
 * Auffinden über Regex (Reguläre Ausdrücke)
 * Reduktion, bis im Wörterbuch bekanntes Wort erreicht wird
